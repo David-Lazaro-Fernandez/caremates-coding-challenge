@@ -1,16 +1,14 @@
-import {setRequestLocale} from 'next-intl/server';
-import {use} from 'react';
+import { setRequestLocale } from "next-intl/server";
+import { use } from "react";
 
 type Props = {
-  params: Promise<{locale: string}>;
+  params: Promise<{ locale: string }>;
 };
 
-export default function IndexPage({params}: Props) {
-  const {locale} = use(params);
+export default function IndexPage({ params }: Props) {
+  const { locale } = use(params);
 
   // Enable static rendering
   setRequestLocale(locale);
-  return (
-    <></>
-  );
+  return <></>;
 }
