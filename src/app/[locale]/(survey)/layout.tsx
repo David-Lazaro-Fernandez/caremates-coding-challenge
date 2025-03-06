@@ -1,15 +1,15 @@
-import type React from "react"
-import { FormProvider } from "../../../context/form-context"
+import type React from "react";
+import { FormProvider } from "../../../context/form-context";
+import { UnsavedChangesProvider } from "@/src/context/unsaved-changes-context";
 
 export default function SurveyLayout({
-    children,
+  children,
 }: {
-    children: React.ReactNode
+  children: React.ReactNode;
 }) {
-    return (
-        <FormProvider>
-                {children}
-        </FormProvider>
-    )
+  return (
+    <FormProvider>
+      <UnsavedChangesProvider>{children}</UnsavedChangesProvider>
+    </FormProvider>
+  );
 }
-
