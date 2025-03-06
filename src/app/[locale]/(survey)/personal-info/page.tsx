@@ -24,7 +24,7 @@ export default function PersonalInfoPage() {
     const onSubmit = (data: PersonalInfoFormData) => {
         updateFormData(data)
         setStepCompleted("personalInfo")
-        router.push("/type-of-care")
+        router.push("/care-type")
     }
 
     return (
