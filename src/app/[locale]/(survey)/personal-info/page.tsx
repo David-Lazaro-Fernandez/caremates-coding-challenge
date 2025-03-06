@@ -1,10 +1,12 @@
 "use client"
 
+import { useEffect } from "react"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useRouter } from "next/navigation"
 import { useFormContext } from "@/src/context/form-context"
 import { personalInfoSchema, type PersonalInfoFormData } from "@/src/lib/validation/form-schemas"
+import { useUnsavedChanges } from "@/src/context/unsaved-changes-context"
 import { Form, FormField, FormItem, FormLabel, FormControl, FormMessage } from "@/src/components/ui/form"
 import { Input } from '@/src/components/ui/input'
 import { Button } from "@/src/components/ui/button"
@@ -13,6 +15,7 @@ import { useTranslations } from "next-intl"
 export default function PersonalInfoPage() {
   const router = useRouter()
   const { formData, updateFormData, setStepCompleted } = useFormContext()
+  const { setHasUnsavedChanges } = useUnsavedChanges()
   const t = useTranslations("personalInfo")
 
   const form = useForm<PersonalInfoFormData>({
@@ -29,6 +32,15 @@ export default function PersonalInfoPage() {
     setStepCompleted("personalInfo")
     router.push("/care-type")
   }
+
+  // Track form changes
+  const isDirty = form.formState.isDirty
+
+  // Update unsaved changes state
+  useEffect(() => {
+      setHasUnsavedChanges(isDirty)
+      return () => setHasUnsavedChanges(false)
+  }, [isDirty, setHasUnsavedChanges])
 
   return (
     <div className="pt-24 container w-full">

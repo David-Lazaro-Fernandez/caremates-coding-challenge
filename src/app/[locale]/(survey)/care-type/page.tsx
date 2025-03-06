@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useRouter } from "next/navigation"
 import { useFormContext } from "@/src/context/form-context"
+import { useUnsavedChanges } from "@/src/context/unsaved-changes-context"
 import { careTypeSchema, type CareTypeFormData } from "@/src/lib/validation/form-schemas"
 import { Form, FormField, FormItem, FormControl, FormMessage } from "@/src/components/ui/form"
 import { RadioGroup, RadioGroupItem } from "@/src/components/ui/radio-group"
@@ -14,6 +15,8 @@ import { useTranslations } from "next-intl"
 export default function CareTypePage() {
   const router = useRouter()
   const { formData, updateFormData, setStepCompleted, isStepCompleted } = useFormContext()
+  const { setHasUnsavedChanges } = useUnsavedChanges()
+  
   const t = useTranslations("typeOfCare")
 
   // Redirect if previous step not completed
@@ -29,6 +32,15 @@ export default function CareTypePage() {
       careType: formData.careType || undefined,
     },
   })
+
+  // Track form changes
+  const isDirty = form.formState.isDirty
+
+  // Update unsaved changes state
+  useEffect(() => {
+    setHasUnsavedChanges(isDirty)
+    return () => setHasUnsavedChanges(false)
+  }, [isDirty, setHasUnsavedChanges])
 
   const onSubmit = (data: CareTypeFormData) => {
     updateFormData(data)

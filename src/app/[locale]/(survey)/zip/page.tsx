@@ -5,15 +5,18 @@ import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useRouter } from "next/navigation"
 import { useFormContext } from "@/src/context/form-context"
+import { useUnsavedChanges } from "@/src/context/unsaved-changes-context"
 import { locationSchema, type LocationFormData } from "@/src/lib/validation/form-schemas"
 import { Form, FormField, FormItem, FormControl, FormMessage } from "@/src/components/ui/form"
 import { Input } from "@/src/components/ui/input"
 import { Button } from "@/src/components/ui/button"
 import { useTranslations } from "next-intl"
 
+
 export default function LocationPage() {
   const router = useRouter()
   const { formData, updateFormData, setStepCompleted, isStepCompleted } = useFormContext()
+  const { setHasUnsavedChanges } = useUnsavedChanges()
   const t = useTranslations("zipCode")
 
   // Redirect if previous step not completed
@@ -33,6 +36,16 @@ export default function LocationPage() {
       zipCode: formData.zipCode || "",
     },
   })
+
+   // Track form changes
+   const isDirty = form.formState.isDirty
+
+   // Update unsaved changes state
+   useEffect(() => {
+       setHasUnsavedChanges(isDirty)
+       return () => setHasUnsavedChanges(false)
+   }, [isDirty, setHasUnsavedChanges])
+
 
   const onSubmit = (data: LocationFormData) => {
     updateFormData(data)
