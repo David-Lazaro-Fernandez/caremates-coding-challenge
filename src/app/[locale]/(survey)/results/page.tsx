@@ -8,12 +8,14 @@ import { useFormContext } from "@/src/context/form-context"
 import { findMatchingFacilities } from "@/src/services/facility-service"
 import type { Facility } from "@/src/types/facility"
 import { Button } from "@/src/components/ui/button"
+import { useTranslations } from "next-intl"
 
 export default function ResultsPage() {
   const router = useRouter()
   const { formData, isStepCompleted, resetForm } = useFormContext()
   const [facilities, setFacilities] = useState<Facility[]>([])
   const [loading, setLoading] = useState(true)
+  const t = useTranslations("results")
 
   // Redirect if required steps not completed
   useEffect(() => {
@@ -40,15 +42,19 @@ export default function ResultsPage() {
 
   return (
     <div className="space-y-6 container w-full mt-24">
-      <button onClick={handleNewApplication} className="flex items-center gap-2 text-[#A958FF] hover:underline">
+      <button 
+        onClick={handleNewApplication} 
+        className="flex items-center gap-2 text-[#A958FF] hover:underline"
+      >
         <ArrowLeft className="w-4 h-4" />
-        Create a new application
+        {t("createApplication")}
       </button>
 
       <h1 className="text-2xl font-bold text-[#333950]">
         {facilities.length > 0
-          ? "Congratulations! Here are the facilities we found for you."
-          : "No matching facilities found"}
+          ? t("congratulations")
+          : t("noFacilitiesFound")
+        }
       </h1>
 
       <div className="space-y-4">
@@ -58,23 +64,22 @@ export default function ResultsPage() {
               <h3 className="font-semibold text-lg text-[#333950]">{facility.name}</h3>
               <p className="text-[#333950]/70 mt-1">{facility.address}</p>
               <Button 
-              onClick={()=>router.push('/end')}
-              className="py-2 mt-4 w-full">
-                Register
+                onClick={() => router.push('/end')}
+                className="py-2 mt-4 w-full"
+              >
+                {t("register")}
               </Button>
             </div>
           ))
         ) : (
           <div className="text-center py-8">
-            <p className="text-lg font-medium text-[#333950]">No facilities found matching your criteria</p>
-            <p className="text-[#333950]/70 mt-2">
-              Try adjusting your search parameters or contact support for assistance
-            </p>
+            <p className="text-lg font-medium text-[#333950]">{t("noFacilitiesFound")}</p>
+            <p className="text-[#333950]/70 mt-2">{t("searchHint")}</p>
             <Link
               href="/zip"
               className="mt-6 inline-block bg-primary text-white px-6 py-2 rounded-md font-medium"
             >
-              Adjust Search
+              {t("adjustSearch")}
             </Link>
           </div>
         )}
@@ -82,4 +87,3 @@ export default function ResultsPage() {
     </div>
   )
 }
-

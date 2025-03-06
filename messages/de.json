@@ -19,6 +19,7 @@
       "agreement": {
         "text": "Ich bestätige, dass ich die",
         "termsOfUse": "CareMates Nutzungsbedingungen",
+        "and": "und",
         "facilityTerms": "[Facility] Nutzungsbedingungen, Zustimmung zur Nutzung elektronischer Signaturen und Aufzeichnungen."
       },
       "privacyNotice": {
@@ -53,15 +54,27 @@
     "zipCode": {
       "title": "Postleitzahl",
       "heading": "Wo befinden Sie sich?",
-      "placeholder": "Z. B.: Luna Alexander",
+      "placeholder": "Z. B.: 10015",
       "dontKnow": "Ich kenne meine Postleitzahl nicht",
       "continue": "Weiter"
     },
     "results": {
       "title": "Ergebnisse",
-      "congratulations": "Herzlichen Glückwunsch! Hier sind die Einrichtungen, die wir für Sie gefunden haben.",
+      "congratulations": "Herzlichen Glückwunsch! Dies sind die Einrichtungen, die wir für Sie gefunden haben.",
       "register": "Registrieren",
-      "createApplication": "Neue Bewerbung erstellen"
+      "createApplication": "Neuen Antrag erstellen",
+      "noFacilitiesFound": "Keine Einrichtungen gefunden, die Ihren Kriterien entsprechen",
+      "searchHint": "Versuchen Sie, Ihre Suchparameter anzupassen oder kontaktieren Sie den Support für Hilfe",
+      "adjustSearch": "Suche anpassen"
+    },
+    "thankYou": {
+      "congrats": "Herzlichen Glückwunsch!",
+      "createApplication": "Neuen Antrag erstellen",
+      "thanks": {
+        "prefix": "Vielen Dank für Ihre Bewerbung bei uns, bitte gehen Sie zum",
+        "hospital": "ausgewählten Krankenhaus",
+        "sufix": "so bald wie möglich."
+      }
     },
     "Error": {
       "title": "Etwas Seltsames ist passiert, vielleicht haben Mars-Tacos den Planeten Erde angegriffen oder wir konnten die gesuchte Seite einfach nicht finden.",
