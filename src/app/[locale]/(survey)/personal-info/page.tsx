@@ -20,10 +20,7 @@ export default function PersonalInfoPage() {
             lastName: formData.lastName || "",
         },
     })
-
-    // Track form changes
-    const isDirty = form.formState.isDirty
-
+    
     const onSubmit = (data: PersonalInfoFormData) => {
         updateFormData(data)
         setStepCompleted("personalInfo")
