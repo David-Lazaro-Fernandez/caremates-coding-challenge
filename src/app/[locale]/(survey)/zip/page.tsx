@@ -1,57 +1,68 @@
-"use client"
+"use client";
 
-import { useEffect } from "react"
-import { useForm } from "react-hook-form"
-import { zodResolver } from "@hookform/resolvers/zod"
-import { useRouter } from "next/navigation"
-import { useFormContext } from "@/src/context/form-context"
-import { useUnsavedChanges } from "@/src/context/unsaved-changes-context"
-import { locationSchema, type LocationFormData } from "@/src/lib/validation/form-schemas"
-import { Form, FormField, FormItem, FormControl, FormMessage } from "@/src/components/ui/form"
-import { Input } from "@/src/components/ui/input"
-import { Button } from "@/src/components/ui/button"
-import { useTranslations } from "next-intl"
-
+import { useEffect } from "react";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useRouter } from "next/navigation";
+import { useFormContext } from "@/src/context/form-context";
+import { useUnsavedChanges } from "@/src/context/unsaved-changes-context";
+import {
+  locationSchema,
+  type LocationFormData,
+} from "@/src/lib/validation/form-schemas";
+import {
+  Form,
+  FormField,
+  FormItem,
+  FormControl,
+  FormMessage,
+} from "@/src/components/ui/form";
+import { Input } from "@/src/components/ui/input";
+import { Button } from "@/src/components/ui/button";
+import { useTranslations } from "next-intl";
+import { applicantService } from "@/src/services/application-service";
 
 export default function LocationPage() {
-  const router = useRouter()
-  const { formData, updateFormData, setStepCompleted, isStepCompleted } = useFormContext()
-  const { setHasUnsavedChanges } = useUnsavedChanges()
-  const t = useTranslations("zipCode")
+  const router = useRouter();
+  const { formData, updateFormData, setStepCompleted, isStepCompleted } =
+    useFormContext();
+  const { setHasUnsavedChanges } = useUnsavedChanges();
+  const t = useTranslations("zipCode");
 
-  // Redirect if previous step not completed
   useEffect(() => {
     if (!isStepCompleted("careType")) {
-      router.push("/start")
+      router.push("/start");
     }
-    
+
     if (formData.careType === "daycare") {
-      router.push("/results")
+      router.push("/results");
     }
-  }, [isStepCompleted, formData.careType, router])
+  }, [isStepCompleted, formData.careType, router]);
 
   const form = useForm<LocationFormData>({
     resolver: zodResolver(locationSchema),
     defaultValues: {
       zipCode: formData.zipCode || "",
     },
-  })
+  });
 
-   // Track form changes
-   const isDirty = form.formState.isDirty
+  const isDirty = form.formState.isDirty;
 
-   // Update unsaved changes state
-   useEffect(() => {
-       setHasUnsavedChanges(isDirty)
-       return () => setHasUnsavedChanges(false)
-   }, [isDirty, setHasUnsavedChanges])
-
+  useEffect(() => {
+    setHasUnsavedChanges(isDirty);
+    return () => setHasUnsavedChanges(false);
+  }, [isDirty, setHasUnsavedChanges]);
 
   const onSubmit = (data: LocationFormData) => {
-    updateFormData(data)
-    setStepCompleted("location")
-    router.push("/results")
-  }
+    updateFormData(data);
+    setStepCompleted("location");
+    if (formData.id) {
+      applicantService.updateApplication(formData.id, {
+        zip_code: data.zipCode,
+      });
+    }
+    router.push("/results");
+  };
 
   return (
     <div className="space-y-6 container w-full mt-24">
@@ -68,15 +79,15 @@ export default function LocationPage() {
             render={({ field }) => (
               <FormItem>
                 <FormControl>
-                  <Input 
-                    placeholder={t("placeholder")} 
-                    className="placeholder:text-gray-300" 
-                    {...field} 
+                  <Input
+                    placeholder={t("placeholder")}
+                    className="placeholder:text-gray-300"
+                    {...field}
                   />
                 </FormControl>
                 <FormMessage />
-                <a 
-                  href="#" 
+                <a
+                  href="#"
                   className="text-[#A958FF] text-sm hover:underline mt-2 inline-block"
                 >
                   {t("dontKnow")}
@@ -95,5 +106,5 @@ export default function LocationPage() {
         </form>
       </Form>
     </div>
-  )
+  );
 }

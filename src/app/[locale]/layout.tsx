@@ -31,16 +31,12 @@ export async function generateMetadata(props: Omit<Props, "children">) {
 export default async function LocaleLayout({ children, params }: Props) {
   const { locale } = await params;
 
-  // Ensure that the incoming `locale` is valid
   if (!routing.locales.includes(locale as any)) {
     notFound();
   }
 
-  // Enable static rendering
   setRequestLocale(locale);
 
-  // Providing all messages to the client
-  // side is the easiest way to get started
   const messages = await getMessages();
 
   return (

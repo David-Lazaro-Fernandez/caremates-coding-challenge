@@ -1,6 +1,5 @@
-import type { Facility, FacilityMatchResult } from "@/src/types/facility"
+import type { Facility, FacilityMatchResult } from "@/src/types/facility";
 
-// Sample facility data
 const facilities: Facility[] = [
   {
     id: "1",
@@ -57,50 +56,50 @@ const facilities: Facility[] = [
     zipCodeStart: 10000,
     zipCodeEnd: 24999,
   },
-]
+];
 
-/**
- * Finds matching facilities based on care type and zip code
- */
-export function findMatchingFacilities(careType: string, zipCode: string): FacilityMatchResult {
-  // Day care always returns no match
+
+export function findMatchingFacilities(
+  careType: string,
+  zipCode: string,
+): FacilityMatchResult {
+
   if (careType === "daycare") {
-    return { matched: false, facilities: [] }
+    return { matched: false, facilities: [] };
   }
 
-  // Convert zip code to number for comparison
-  const patientZip = Number.parseInt(zipCode, 10)
+  const patientZip = Number.parseInt(zipCode, 10);
 
-  // Filter facilities that match the care type
   const matchingFacilities = facilities.filter((facility) => {
     if (
       careType === "stationary" &&
-      (facility.careType === "Stationary" || facility.careType === "Stationary & Ambulatory")
+      (facility.careType === "Stationary" ||
+        facility.careType === "Stationary & Ambulatory")
     ) {
-      return true
+      return true;
     }
     if (
       careType === "ambulatory" &&
-      (facility.careType === "Ambulatory" || facility.careType === "Stationary & Ambulatory")
+      (facility.careType === "Ambulatory" ||
+        facility.careType === "Stationary & Ambulatory")
     ) {
-      return true
+      return true;
     }
-    return false
-  })
+    return false;
+  });
 
-  // Filter facilities that serve the patient's zip code
   const servingFacilities = matchingFacilities.filter(
-    (facility) => patientZip >= facility.zipCodeStart && patientZip <= facility.zipCodeEnd,
-  )
+    (facility) =>
+      patientZip >= facility.zipCodeStart && patientZip <= facility.zipCodeEnd,
+  );
 
   if (servingFacilities.length === 0) {
-    return { matched: false, facilities: [] }
+    return { matched: false, facilities: [] };
   }
 
-  return { matched: true, facilities: servingFacilities }
+  return { matched: true, facilities: servingFacilities };
 }
 
 export const facilityService = {
   findMatchingFacilities,
-}
-
+};

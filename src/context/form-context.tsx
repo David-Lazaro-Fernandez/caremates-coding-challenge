@@ -1,67 +1,97 @@
-"use client"
+"use client";
 
-import { createContext, useContext, useState, type ReactNode } from "react"
+import { createContext, useContext, useState, type ReactNode, useEffect } from "react";
 
-// Define the form data structure
 export interface SurveyFormData {
-  termsAccepted?: boolean
-  firstName?: string
-  middleName?: string
-  lastName?: string
-  careType?: "stationary" | "ambulatory" | "daycare"
-  zipCode?: string
+  id?: string;
+  termsAccepted?: boolean;
+  firstName?: string;
+  middleName?: string;
+  lastName?: string;
+  careType?: "stationary" | "ambulatory" | "daycare";
+  zipCode?: string;
 }
 
-// Define the steps
-type FormStep = "terms" | "personalInfo" | "careType" | "location" | "results"
+type FormStep = "terms" | "personalInfo" | "careType" | "location" | "results";
 
-// Define the context structure
 interface FormContextType {
-  formData: SurveyFormData
-  completedSteps: FormStep[]
-  currentStep: FormStep
-  updateFormData: (data: Partial<SurveyFormData>) => void
-  setStepCompleted: (step: FormStep) => void
-  isStepCompleted: (step: FormStep) => boolean
-  resetForm: () => void
+  formData: SurveyFormData;
+  completedSteps: FormStep[];
+  currentStep: FormStep;
+  updateFormData: (data: Partial<SurveyFormData>) => void;
+  setStepCompleted: (step: FormStep) => void;
+  isStepCompleted: (step: FormStep) => boolean;
+  resetForm: () => void;
 }
 
-// Create the context
-const FormContext = createContext<FormContextType | undefined>(undefined)
+const FormContext = createContext<FormContextType | undefined>(undefined);
 
-// Create the provider component
 export function FormProvider({ children }: { children: ReactNode }) {
-  const [formData, setFormData] = useState<SurveyFormData>({})
-  const [completedSteps, setCompletedSteps] = useState<FormStep[]>([])
-  const [currentStep, setCurrentStep] = useState<FormStep>("terms")
+  const [formData, setFormData] = useState<SurveyFormData>(() => {
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('surveyFormData');
+      return saved ? JSON.parse(saved) : {};
+    }
+    return {};
+  });
+
+  const [completedSteps, setCompletedSteps] = useState<FormStep[]>(() => {
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('completedSteps');
+      return saved ? JSON.parse(saved) : [];
+    }
+    return [];
+  });
+
+  const [currentStep, setCurrentStep] = useState<FormStep>(() => {
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('currentStep');
+      return saved ? JSON.parse(saved) : "terms";
+    }
+    return "terms";
+  });
+
+  useEffect(() => {
+    localStorage.setItem('surveyFormData', JSON.stringify(formData));
+    localStorage.setItem('completedSteps', JSON.stringify(completedSteps));
+    localStorage.setItem('currentStep', JSON.stringify(currentStep));
+  }, [formData, completedSteps, currentStep]);
 
   const updateFormData = (data: Partial<SurveyFormData>) => {
-    setFormData((prev) => ({ ...prev, ...data }))
-  }
+    setFormData((prev) => ({ ...prev, ...data }));
+  };
 
   const setStepCompleted = (step: FormStep) => {
     if (!completedSteps.includes(step)) {
-      setCompletedSteps((prev) => [...prev, step])
+      setCompletedSteps((prev) => [...prev, step]);
     }
 
-    // Update current step
-    const stepOrder: FormStep[] = ["terms", "personalInfo", "careType", "location", "results"]
-    const currentIndex = stepOrder.indexOf(step)
-    const nextStep = stepOrder[currentIndex + 1]
+    const stepOrder: FormStep[] = [
+      "terms",
+      "personalInfo",
+      "careType",
+      "location",
+      "results",
+    ];
+    const currentIndex = stepOrder.indexOf(step);
+    const nextStep = stepOrder[currentIndex + 1];
     if (nextStep) {
-      setCurrentStep(nextStep)
+      setCurrentStep(nextStep);
     }
-  }
+  };
 
   const isStepCompleted = (step: FormStep) => {
-    return completedSteps.includes(step)
-  }
+    return completedSteps.includes(step);
+  };
 
   const resetForm = () => {
-    setFormData({})
-    setCompletedSteps([])
-    setCurrentStep("terms")
-  }
+    setFormData({});
+    setCompletedSteps([]);
+    setCurrentStep("terms");
+    localStorage.removeItem('surveyFormData');
+    localStorage.removeItem('completedSteps');
+    localStorage.removeItem('currentStep');
+  };
 
   return (
     <FormContext.Provider
@@ -77,15 +107,13 @@ export function FormProvider({ children }: { children: ReactNode }) {
     >
       {children}
     </FormContext.Provider>
-  )
+  );
 }
 
-// Create a hook to use the context
 export function useFormContext() {
-  const context = useContext(FormContext)
+  const context = useContext(FormContext);
   if (context === undefined) {
-    throw new Error("useFormContext must be used within a FormProvider")
+    throw new Error("useFormContext must be used within a FormProvider");
   }
-  return context
+  return context;
 }
-

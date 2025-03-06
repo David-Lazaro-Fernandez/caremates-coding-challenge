@@ -1,64 +1,83 @@
-"use client"
+"use client";
 
-import { useEffect } from "react"
-import { useForm } from "react-hook-form"
-import { zodResolver } from "@hookform/resolvers/zod"
-import { useRouter } from "next/navigation"
-import { useFormContext } from "@/src/context/form-context"
-import { useUnsavedChanges } from "@/src/context/unsaved-changes-context"
-import { careTypeSchema, type CareTypeFormData } from "@/src/lib/validation/form-schemas"
-import { Form, FormField, FormItem, FormControl, FormMessage } from "@/src/components/ui/form"
-import { RadioGroup, RadioGroupItem } from "@/src/components/ui/radio-group"
-import { Button } from "@/src/components/ui/button"
-import { useTranslations } from "next-intl"
+import { useEffect } from "react";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useRouter } from "next/navigation";
+import { useFormContext } from "@/src/context/form-context";
+import { useUnsavedChanges } from "@/src/context/unsaved-changes-context";
+import {
+  careTypeSchema,
+  type CareTypeFormData,
+} from "@/src/lib/validation/form-schemas";
+import {
+  Form,
+  FormField,
+  FormItem,
+  FormControl,
+  FormMessage,
+} from "@/src/components/ui/form";
+import { RadioGroup, RadioGroupItem } from "@/src/components/ui/radio-group";
+import { Button } from "@/src/components/ui/button";
+import { useTranslations } from "next-intl";
+import { applicantService } from "@/src/services/application-service";
 
 export default function CareTypePage() {
-  const router = useRouter()
-  const { formData, updateFormData, setStepCompleted, isStepCompleted } = useFormContext()
-  const { setHasUnsavedChanges } = useUnsavedChanges()
-  
-  const t = useTranslations("typeOfCare")
+  const router = useRouter();
+  const { formData, updateFormData, setStepCompleted, isStepCompleted } =
+    useFormContext();
+  const { setHasUnsavedChanges } = useUnsavedChanges();
 
-  // Redirect if previous step not completed
+  const t = useTranslations("typeOfCare");
+
   useEffect(() => {
     if (!isStepCompleted("personalInfo")) {
-      router.push("/personal-info")
+      router.push("/personal-info");
     }
-  }, [isStepCompleted, router])
+  }, [isStepCompleted, router]);
 
   const form = useForm<CareTypeFormData>({
     resolver: zodResolver(careTypeSchema),
     defaultValues: {
       careType: formData.careType || undefined,
     },
-  })
+  });
 
-  // Track form changes
-  const isDirty = form.formState.isDirty
+  const isDirty = form.formState.isDirty;
 
-  // Update unsaved changes state
   useEffect(() => {
-    setHasUnsavedChanges(isDirty)
-    return () => setHasUnsavedChanges(false)
-  }, [isDirty, setHasUnsavedChanges])
+    setHasUnsavedChanges(isDirty);
+    return () => setHasUnsavedChanges(false);
+  }, [isDirty, setHasUnsavedChanges]);
 
   const onSubmit = (data: CareTypeFormData) => {
-    updateFormData(data)
-    setStepCompleted("careType")
+    updateFormData(data);
+    setStepCompleted("careType");
 
-    // Skip location step for daycare
-    if (data.careType === "daycare") {
-      router.push("/results")
-    } else {
-      router.push("/zip")
+    if (formData.id) {
+      const careTypeMap = {
+        stationary: "STATIONARY",
+        ambulatory: "AMBULATORY",
+        daycare: "DAY_CARE",
+      } as const;
+
+      applicantService.updateApplication(formData.id, {
+        care_type: careTypeMap[data.careType],
+      });
     }
-  }
+
+    if (data.careType === "daycare") {
+      router.push("/results");
+    } else {
+      router.push("/zip");
+    }
+  };
 
   const careOptions = [
     { value: "stationary", label: t("options.stationary") },
     { value: "ambulatory", label: t("options.ambulatory") },
     { value: "daycare", label: t("options.dayCare") },
-  ]
+  ];
 
   return (
     <div className="space-y-6 w-full container mt-24">
@@ -75,7 +94,11 @@ export default function CareTypePage() {
             render={({ field }) => (
               <FormItem className="space-y-3">
                 <FormControl>
-                  <RadioGroup onValueChange={field.onChange} value={field.value} className="flex flex-col gap-3">
+                  <RadioGroup
+                    onValueChange={field.onChange}
+                    value={field.value}
+                    className="flex flex-col gap-3"
+                  >
                     {careOptions.map((option) => (
                       <label
                         key={option.value}
@@ -85,7 +108,9 @@ export default function CareTypePage() {
                           value={option.value}
                           className="border-[#A958FF] text-[#A958FF]"
                         />
-                        <span className="font-medium text-[#333950]">{option.label}</span>
+                        <span className="font-medium text-[#333950]">
+                          {option.label}
+                        </span>
                       </label>
                     ))}
                   </RadioGroup>
@@ -105,5 +130,5 @@ export default function CareTypePage() {
         </form>
       </Form>
     </div>
-  )
+  );
 }
