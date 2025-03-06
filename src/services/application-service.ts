@@ -14,12 +14,12 @@ export interface Application {
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
 );
 
 export const applicantService = {
   async createApplication(
-    applicant: Omit<Application, "created_at">
+    applicant: Omit<Application, "created_at">,
   ): Promise<Application | null> {
     try {
       const id = new Date().toISOString();
@@ -58,7 +58,7 @@ export const applicantService = {
 
   async updateApplication(
     id: string,
-    updates: Partial<Application>
+    updates: Partial<Application>,
   ): Promise<Application | null> {
     try {
       const { data, error } = await supabase

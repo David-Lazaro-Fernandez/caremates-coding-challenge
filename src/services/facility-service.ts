@@ -58,12 +58,10 @@ const facilities: Facility[] = [
   },
 ];
 
-
 export function findMatchingFacilities(
   careType: string,
   zipCode: string,
 ): FacilityMatchResult {
-
   if (careType === "daycare") {
     return { matched: false, facilities: [] };
   }
