@@ -1,4 +1,3 @@
-
 "use client"
 
 import { useEffect } from "react"
@@ -10,10 +9,12 @@ import { careTypeSchema, type CareTypeFormData } from "@/src/lib/validation/form
 import { Form, FormField, FormItem, FormControl, FormMessage } from "@/src/components/ui/form"
 import { RadioGroup, RadioGroupItem } from "@/src/components/ui/radio-group"
 import { Button } from "@/src/components/ui/button"
+import { useTranslations } from "next-intl"
 
 export default function CareTypePage() {
   const router = useRouter()
   const { formData, updateFormData, setStepCompleted, isStepCompleted } = useFormContext()
+  const t = useTranslations("typeOfCare")
 
   // Redirect if previous step not completed
   useEffect(() => {
@@ -41,11 +42,17 @@ export default function CareTypePage() {
     }
   }
 
+  const careOptions = [
+    { value: "stationary", label: t("options.stationary") },
+    { value: "ambulatory", label: t("options.ambulatory") },
+    { value: "daycare", label: t("options.dayCare") },
+  ]
+
   return (
     <div className="space-y-6 w-full container mt-24">
       <div>
-        <h1 className="text-2xl font-bold text-[#333950]">What are you looking for today?</h1>
-        <p className="text-[#333950]/70 mt-1">Type of care</p>
+        <h1 className="text-2xl font-bold text-[#333950]">{t("heading")}</h1>
+        <p className="text-[#333950]/70 mt-1">{t("title")}</p>
       </div>
 
       <Form {...form}>
@@ -57,16 +64,15 @@ export default function CareTypePage() {
               <FormItem className="space-y-3">
                 <FormControl>
                   <RadioGroup onValueChange={field.onChange} value={field.value} className="flex flex-col gap-3">
-                    {[
-                      { value: "stationary", label: "Stationary" },
-                      { value: "ambulatory", label: "Ambulatory" },
-                      { value: "daycare", label: "Day Care" },
-                    ].map((option) => (
+                    {careOptions.map((option) => (
                       <label
                         key={option.value}
                         className="flex items-center gap-3 p-4 rounded-lg border border-gray-200 cursor-pointer hover:bg-gray-50"
                       >
-                        <RadioGroupItem value={option.value} className="border-[#A958FF] text-[#A958FF]" />
+                        <RadioGroupItem
+                          value={option.value}
+                          className="border-[#A958FF] text-[#A958FF]"
+                        />
                         <span className="font-medium text-[#333950]">{option.label}</span>
                       </label>
                     ))}
@@ -79,10 +85,10 @@ export default function CareTypePage() {
 
           <Button
             type="submit"
-             className="w-full py-2 mt-10 disabled:bg-gray-100"
+            className="w-full py-2 mt-10 disabled:bg-gray-100"
             disabled={!form.formState.isValid}
           >
-            Continue
+            {t("continue")}
           </Button>
         </form>
       </Form>

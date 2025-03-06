@@ -20,6 +20,7 @@
       "agreement": {
         "text": "Je confirme avoir lu et accepté les",
         "termsOfUse": "Conditions d'utilisation de CareMates",
+        "and": "ent",
         "facilityTerms": "Conditions d'utilisation de [Facility], Consentement à l'utilisation des signatures électroniques et des enregistrements."
       },
       "privacyNotice": {
@@ -54,15 +55,27 @@
     "zipCode": {
       "title": "Code postal",
       "heading": "Où êtes-vous situé(e) ?",
-      "placeholder": "Ex : Luna Alexander",
+      "placeholder": "Ex : 10015",
       "dontKnow": "Je ne connais pas mon code postal",
       "continue": "Continuer"
     },
     "results": {
       "title": "Résultats",
-      "congratulations": "Félicitations ! Voici les établissements que nous avons trouvés pour vous.",
+      "congratulations": "Félicitations! Voici les installations que nous avons trouvées pour vous.",
       "register": "S'inscrire",
-      "createApplication": "Créer une nouvelle demande"
+      "createApplication": "Créer une nouvelle demande",
+      "noFacilitiesFound": "Aucune installation trouvée correspondant à vos critères",
+      "searchHint": "Essayez d'ajuster vos paramètres de recherche ou contactez le support pour obtenir de l'aide",
+      "adjustSearch": "Ajuster la recherche"
+    },
+    "thankYou": {
+      "congrats": "Félicitations !",
+      "createApplication": "Créer une nouvelle demande",
+      "thanks": {
+        "prefix": "Merci d'avoir soumis votre candidature chez nous, veuillez vous rendre à l'",
+        "hospital": "hôpital sélectionné",
+        "sufix": "dès que possible."
+      }
     },
     "Error":{
       "title":"Quelque chose d'étrange s'est produit, peut-être que les tacos martiens ont attaqué la planète Terre ou nous n'avons tout simplement pas pu trouver la page que vous recherchiez.",

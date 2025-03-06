@@ -7,66 +7,65 @@ import { useRouter } from 'next/navigation'
 import { ArrowLeft } from 'lucide-react'
 import { useFormContext } from '@/src/context/form-context'
 import { Button } from '@/src/components/ui/button'
-
+import { useTranslations } from 'next-intl'
 
 export default function EndPage() {
-    const router = useRouter()
-    const searchParams = useSearchParams()
-    const hospital = searchParams.get('hospital')
-    const [showConfetti, setShowConfetti] = useState(true)
-    const {resetForm} = useFormContext()
-    
-    useEffect(() => {
-        const timer = setTimeout(() => {
-            setShowConfetti(false)
-        }, 5000)
+  const router = useRouter()
+  const searchParams = useSearchParams()
+  const hospital = searchParams.get('hospital')
+  const [showConfetti, setShowConfetti] = useState(true)
+  const { resetForm } = useFormContext()
+  const t = useTranslations("thankYou")
 
-        return () => clearTimeout(timer)
-    }, [])
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowConfetti(false)
+    }, 5000)
 
-    const handleNewApplication = () => {
-        resetForm()
-        router.push("/start")
-    }
+    return () => clearTimeout(timer)
+  }, [])
 
-    return (
-        <div className="space-y-6 mt-24 container w-full">
-            <Button onClick={handleNewApplication} className="flex items-center">
-                    <ArrowLeft className="w-4 h-4" />
-                    Create a new application
-            </Button>
-            <div className='flex flex-col items-center w-full'>
-                
-                {showConfetti && (
-                    <Confetti
-                        width={window.innerWidth}
-                        height={window.innerHeight}
-                        recycle={true}
-                        numberOfPieces={200}
-                    />
-                )}
+  const handleNewApplication = () => {
+    resetForm()
+    router.push("/start")
+  }
 
-                <Image
-                    src="/confetti.png"
-                    alt="Success"
-                    width={100}
-                    height={100}
-                    className="mb-8"
-                />
+  return (
+    <div className="space-y-6 mt-24 container w-full">
+      <Button onClick={handleNewApplication} className="flex items-center">
+        <ArrowLeft className="w-4 h-4" />
+        {t("createApplication")}
+      </Button>
+      <div className="flex flex-col items-center w-full">
+        {showConfetti && (
+          <Confetti
+            width={window.innerWidth}
+            height={window.innerHeight}
+            recycle={true}
+            numberOfPieces={200}
+          />
+        )}
 
-                <h1 className="text-xl font-bold text-primary mb-4">
-                    ¡Congratulations!
-                </h1>
+        <Image
+          src="/confetti.png"
+          alt="Success"
+          width={100}
+          height={100}
+          className="mb-8"
+        />
 
-                <p className="text-lg">
-                    Thank you for submitting your application with us, please go to the{' '}
-                    <span className="font-semibold text-primary">
-                        {hospital || 'selected hospital'}
-                    </span>{' '}
-                    as soon as you can.
-                </p>
-            </div>
+        <h1 className="text-xl font-bold text-primary mb-4">
+          {t("congrats")}
+        </h1>
 
-        </div>
-    )
+        <p className="text-lg">
+          {t("thanks.prefix")}{" "}
+          <span className="font-semibold text-primary">
+            {hospital || t("thanks.hospital")}
+          </span>{" "}
+          {t("thanks.sufix")}
+        </p>
+      </div>
+    </div>
+  )
 }
