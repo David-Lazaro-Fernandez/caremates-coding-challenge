@@ -36,7 +36,7 @@ export default async function LocaleLayout({ children, params }: Props) {
 
   return (
     <html className="h-full" lang={locale}>
-      <body className={clsx(inter.className, "flex h-full flex-row")}>
+      <body className={clsx(inter.className, "flex h-full flex-col md:flex-row")}>
         <NextIntlClientProvider messages={messages}>
           {children}
         </NextIntlClientProvider>

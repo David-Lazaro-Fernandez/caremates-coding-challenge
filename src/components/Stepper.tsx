@@ -24,7 +24,7 @@ const Stepper = ({ steps }: StepperProps) => {
   };
 
   return (
-    <div className="w-64  p-4 ">
+    <div className="w-64  p-4 hidden md:block">
       <div className="relative">
         {steps.map((step, index) => {
           const isCompleted = index < currentStepIndex;

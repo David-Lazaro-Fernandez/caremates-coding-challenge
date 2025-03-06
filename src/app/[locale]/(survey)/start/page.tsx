@@ -25,7 +25,7 @@ export default function StartPage() {
   };
 
   return (
-    <div className="max-w-xl mx-auto px-4 py-10">
+    <div className="max-w-xl mx-auto px-4 py-10  px-4 md:px-0">
       <div className="flex flex-col items-center text-start mb-8">
         <Image
           src="/hero.png"

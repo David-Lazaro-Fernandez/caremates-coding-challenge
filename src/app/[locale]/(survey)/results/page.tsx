@@ -32,9 +32,17 @@ export default function ResultsPage() {
     setLoading(false);
   }, [formData, isStepCompleted, router]);
 
-  const handleNewApplication = () => {
-    resetForm();
+  const handleNewApplication = async () => {
+    await resetForm();
     router.push("/start");
+  };
+
+  const handleAdjustSearch = () => {
+    if (formData.careType === "daycare") {
+      router.push("/care-type");
+    } else {
+      router.push("/zip");
+    }
   };
 
   if (loading) {
@@ -42,14 +50,14 @@ export default function ResultsPage() {
   }
 
   return (
-    <div className="space-y-6 container w-full mt-24">
-      <button
+    <div className="space-y-6 container w-full mt-8 md:mt-24  px-4 md:px-0">
+      <Button
         onClick={handleNewApplication}
-        className="flex items-center gap-2 text-[#A958FF] hover:underline"
+        className="flex items-center gap-2"
       >
         <ArrowLeft className="w-4 h-4" />
         {t("createApplication")}
-      </button>
+      </Button>
 
       <h1 className="text-2xl font-bold text-[#333950]">
         {facilities.length > 0 ? t("congratulations") : t("noFacilitiesFound")}
@@ -80,12 +88,12 @@ export default function ResultsPage() {
               {t("noFacilitiesFound")}
             </p>
             <p className="text-[#333950]/70 mt-2">{t("searchHint")}</p>
-            <Link
-              href="/zip"
+            <Button
+              onClick={handleAdjustSearch}
               className="mt-6 inline-block bg-primary text-white px-6 py-2 rounded-md font-medium"
             >
               {t("adjustSearch")}
-            </Link>
+            </Button>
           </div>
         )}
       </div>

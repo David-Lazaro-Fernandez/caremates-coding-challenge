@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Stepper from "./Stepper";
 import LocaleSwitcher from "./LocaleSwitcher";
+import { cn } from "../lib/utils";
 export default function Navigation() {
   const steps = [
     { label: "Let's Get Started", path: "/start" },
@@ -12,14 +13,21 @@ export default function Navigation() {
   ];
 
   return (
-    <div className="bg-[#FDFBFF] flex flex-col justify-start items-start px-10 py-20 gap-10">
-      <Image
-        src="/logo.png"
-        width={150}
-        height={120}
-        alt="Caremates Logo"
-        className="object-fit"
-      />
+    <div
+      className={cn(`
+      bg-[#FDFBFF] flex flex-row justify-between items-center p-2 sticky top-0
+      md:flex-col md:justify-start md:items-start md:px-10 md:py-20 md:gap-10
+    `)}
+    >
+      <div className="relative w-32 h-24 md:w-42">
+        <Image
+          src="/logo.png"
+          alt="Caremates Logo"
+          fill
+          className="object-contain"
+        />
+      </div>
+
       <Stepper steps={steps} />
       <LocaleSwitcher />
     </div>

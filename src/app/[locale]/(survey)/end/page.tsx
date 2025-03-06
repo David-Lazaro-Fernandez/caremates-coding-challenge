@@ -27,11 +27,14 @@ export default function EndPage() {
 
   const handleNewApplication = () => {
     resetForm();
-    router.push("/start");
+    localStorage.removeItem("completedSteps");
+    setTimeout(() => {
+      router.push("/start");
+    }, 0);
   };
 
   return (
-    <div className="space-y-6 mt-24 container w-full">
+    <div className="space-y-6 mt-8 md:mt-24  px-4 md:px-0 container w-full">
       <Button onClick={handleNewApplication} className="flex items-center">
         <ArrowLeft className="w-4 h-4" />
         {t("createApplication")}
@@ -51,7 +54,7 @@ export default function EndPage() {
           alt="Success"
           width={100}
           height={100}
-          className="mb-8"
+          className="my-8"
         />
 
         <h1 className="text-xl font-bold text-primary mb-4">{t("congrats")}</h1>

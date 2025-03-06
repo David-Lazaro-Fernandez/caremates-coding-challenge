@@ -65,7 +65,7 @@ export default function LocationPage() {
   };
 
   return (
-    <div className="space-y-6 container w-full mt-24">
+    <div className="space-y-6 container w-full mt-24  px-4 md:px-0">
       <div>
         <h1 className="text-2xl font-bold text-[#333950]">{t("heading")}</h1>
         <p className="text-[#333950]/70 mt-1">{t("title")}</p>

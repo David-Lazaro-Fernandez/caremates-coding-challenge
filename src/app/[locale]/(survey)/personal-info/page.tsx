@@ -61,7 +61,7 @@ export default function PersonalInfoPage() {
   }, [isDirty, setHasUnsavedChanges]);
 
   return (
-    <div className="pt-24 container w-full">
+    <div className="pt-24 container w-full px-4 md:px-0">
       <h1 className="text-2xl font-bold text-[#333950] mb-12">
         {t("heading")}
       </h1>
