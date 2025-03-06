@@ -13,16 +13,16 @@ export default function StartPage() {
 
   const handleNavigation = async () => {
     const application = await applicantService.createApplication({
-        terms_accepted: true 
-    })
-       
+      terms_accepted: true,
+    });
+
     updateFormData({
-        id: application!.id,
-        termsAccepted: true
-    })
-    
-    router.push('/personal-info')
-}
+      id: application!.id,
+      termsAccepted: true,
+    });
+
+    router.push("/personal-info");
+  };
 
   return (
     <div className="max-w-xl mx-auto px-4 py-10">

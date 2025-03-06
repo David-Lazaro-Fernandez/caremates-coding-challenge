@@ -28,7 +28,7 @@ export default function PersonalInfoPage() {
   const { formData, updateFormData, setStepCompleted } = useFormContext();
   const { setHasUnsavedChanges } = useUnsavedChanges();
   const t = useTranslations("personalInfo");
-  
+
   const form = useForm<PersonalInfoFormData>({
     resolver: zodResolver(personalInfoSchema),
     defaultValues: {
@@ -38,21 +38,18 @@ export default function PersonalInfoPage() {
     },
   });
 
-
-
-  
   const onSubmit = async (data: PersonalInfoFormData) => {
     updateFormData(data);
     setStepCompleted("personalInfo");
-    
+
     if (formData.id) {
       await applicantService.updateApplication(formData.id, {
-          first_name: data.firstName,
-          middle_name: data.middleName,
-          last_name: data.lastName
-      })
-  }
-  
+        first_name: data.firstName,
+        middle_name: data.middleName,
+        last_name: data.lastName,
+      });
+    }
+
     router.push("/care-type");
   };
 

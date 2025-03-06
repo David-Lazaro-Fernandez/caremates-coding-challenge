@@ -1,6 +1,12 @@
 "use client";
 
-import { createContext, useContext, useState, type ReactNode, useEffect } from "react";
+import {
+  createContext,
+  useContext,
+  useState,
+  type ReactNode,
+  useEffect,
+} from "react";
 
 export interface SurveyFormData {
   id?: string;
@@ -28,33 +34,33 @@ const FormContext = createContext<FormContextType | undefined>(undefined);
 
 export function FormProvider({ children }: { children: ReactNode }) {
   const [formData, setFormData] = useState<SurveyFormData>(() => {
-    if (typeof window !== 'undefined') {
-      const saved = localStorage.getItem('surveyFormData');
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem("surveyFormData");
       return saved ? JSON.parse(saved) : {};
     }
     return {};
   });
 
   const [completedSteps, setCompletedSteps] = useState<FormStep[]>(() => {
-    if (typeof window !== 'undefined') {
-      const saved = localStorage.getItem('completedSteps');
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem("completedSteps");
       return saved ? JSON.parse(saved) : [];
     }
     return [];
   });
 
   const [currentStep, setCurrentStep] = useState<FormStep>(() => {
-    if (typeof window !== 'undefined') {
-      const saved = localStorage.getItem('currentStep');
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem("currentStep");
       return saved ? JSON.parse(saved) : "terms";
     }
     return "terms";
   });
 
   useEffect(() => {
-    localStorage.setItem('surveyFormData', JSON.stringify(formData));
-    localStorage.setItem('completedSteps', JSON.stringify(completedSteps));
-    localStorage.setItem('currentStep', JSON.stringify(currentStep));
+    localStorage.setItem("surveyFormData", JSON.stringify(formData));
+    localStorage.setItem("completedSteps", JSON.stringify(completedSteps));
+    localStorage.setItem("currentStep", JSON.stringify(currentStep));
   }, [formData, completedSteps, currentStep]);
 
   const updateFormData = (data: Partial<SurveyFormData>) => {
@@ -88,9 +94,9 @@ export function FormProvider({ children }: { children: ReactNode }) {
     setFormData({});
     setCompletedSteps([]);
     setCurrentStep("terms");
-    localStorage.removeItem('surveyFormData');
-    localStorage.removeItem('completedSteps');
-    localStorage.removeItem('currentStep');
+    localStorage.removeItem("surveyFormData");
+    localStorage.removeItem("completedSteps");
+    localStorage.removeItem("currentStep");
   };
 
   return (
