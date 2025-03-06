@@ -5,16 +5,24 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { applicantService } from "@/src/services/application-service";
 import { useTranslations } from "next-intl";
+import { useFormContext } from "@/src/context/form-context";
 export default function StartPage() {
   const router = useRouter();
   const t = useTranslations("letsGetStarted");
+  const { updateFormData, formData } = useFormContext();
+
   const handleNavigation = async () => {
-    const data = await applicantService.createApplication({
-      terms_accepted: true,
-    });
-    console.log(data);
-    router.push("/personal-info");
-  };
+    const application = await applicantService.createApplication({
+        terms_accepted: true 
+    })
+       
+    updateFormData({
+        id: application!.id,
+        termsAccepted: true
+    })
+    
+    router.push('/personal-info')
+}
 
   return (
     <div className="max-w-xl mx-auto px-4 py-10">

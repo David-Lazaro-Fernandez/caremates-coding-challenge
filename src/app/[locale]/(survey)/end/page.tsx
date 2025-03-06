@@ -1,34 +1,34 @@
-'use client'
-import { useSearchParams } from 'next/navigation'
-import Image from 'next/image'
-import Confetti from 'react-confetti'
-import { useEffect, useState } from 'react'
-import { useRouter } from 'next/navigation'
-import { ArrowLeft } from 'lucide-react'
-import { useFormContext } from '@/src/context/form-context'
-import { Button } from '@/src/components/ui/button'
-import { useTranslations } from 'next-intl'
+"use client";
+import { useSearchParams } from "next/navigation";
+import Image from "next/image";
+import Confetti from "react-confetti";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+import { ArrowLeft } from "lucide-react";
+import { useFormContext } from "@/src/context/form-context";
+import { Button } from "@/src/components/ui/button";
+import { useTranslations } from "next-intl";
 
 export default function EndPage() {
-  const router = useRouter()
-  const searchParams = useSearchParams()
-  const hospital = searchParams.get('hospital')
-  const [showConfetti, setShowConfetti] = useState(true)
-  const { resetForm } = useFormContext()
-  const t = useTranslations("thankYou")
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const hospital = searchParams.get("hospital");
+  const [showConfetti, setShowConfetti] = useState(true);
+  const { resetForm } = useFormContext();
+  const t = useTranslations("thankYou");
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      setShowConfetti(false)
-    }, 5000)
+      setShowConfetti(false);
+    }, 5000);
 
-    return () => clearTimeout(timer)
-  }, [])
+    return () => clearTimeout(timer);
+  }, []);
 
   const handleNewApplication = () => {
-    resetForm()
-    router.push("/start")
-  }
+    resetForm();
+    router.push("/start");
+  };
 
   return (
     <div className="space-y-6 mt-24 container w-full">
@@ -54,9 +54,7 @@ export default function EndPage() {
           className="mb-8"
         />
 
-        <h1 className="text-xl font-bold text-primary mb-4">
-          {t("congrats")}
-        </h1>
+        <h1 className="text-xl font-bold text-primary mb-4">{t("congrats")}</h1>
 
         <p className="text-lg">
           {t("thanks.prefix")}{" "}
@@ -67,5 +65,5 @@ export default function EndPage() {
         </p>
       </div>
     </div>
-  )
+  );
 }
