@@ -1,10 +1,20 @@
 'use client'
+import { Button } from "@/src/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { applicantService } from "@/src/services/application-service";
 
 export default function StartPage() {
-
+    const router = useRouter()
+    const handleNavigation = async () => {
+        const data = await applicantService.createApplication({
+            terms_accepted: true 
+        })
+        console.log(data)
+        router.push('/personal-info')
+    }
+    
     return (
         <div className="max-w-xl mx-auto px-4 py-10">
             <div className="flex flex-col items-center text-start mb-8">
@@ -57,9 +67,11 @@ export default function StartPage() {
                 <p className="text-sm text-gray-500">By clicking “Continue”, I acknowledge receipt of the <Link href='#' className='text-primary underline'>Caremates Privacy Policy </Link>, and I consent to the processing of my personal data in accordance with the <Link href='' className="text-primary underline">EU General Data Protection Regulation (GDPR)</Link>.</p>
             </div>
 
-            <button className="bg-primary text-white px-3 py-2 rounded-md w-full mt-10 hover:bg-primaryHover transition-colors duration-200 ease-in-out">
+            <Button 
+            onClick={handleNavigation}
+            className="w-full py-2 mt-10">
                 Continue
-            </button>
+            </Button>
 
         </div>
     );

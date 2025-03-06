@@ -1,12 +1,14 @@
 "use client"
 
+import { useEffect } from "react"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useRouter } from "next/navigation"
 import { useFormContext } from "@/src/context/form-context"
 import { personalInfoSchema, type PersonalInfoFormData } from "@/src/lib/validation/form-schemas"
-import { Form, FormField, FormItem, FormLabel, FormControl, FormMessage } from "@/components/ui/form"
-import { Input } from '@/components/ui/input'
+import { Form, FormField, FormItem, FormLabel, FormControl, FormMessage } from "@/src/components/ui/form"
+import { Input } from '@/src/components/ui/input'
+import { Button } from "@/src/components/ui/button"
 
 export default function PersonalInfoPage() {
     const router = useRouter()
@@ -20,7 +22,7 @@ export default function PersonalInfoPage() {
             lastName: formData.lastName || "",
         },
     })
-    
+
     const onSubmit = (data: PersonalInfoFormData) => {
         updateFormData(data)
         setStepCompleted("personalInfo")
@@ -76,12 +78,12 @@ export default function PersonalInfoPage() {
                             </FormItem>
                         )}
                     />
-                    <button
+                    <Button
                         type="submit"
-                        className="w-full bg-primary text-white py-2 rounded-md font-medium hover:bg-primaryHover transition-colors"
+                        className="w-full py-2 mt-10"
                     >
                         Continue
-                    </button>
+                    </Button>
                 </form>
             </Form>
         </div>

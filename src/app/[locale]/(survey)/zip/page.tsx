@@ -6,8 +6,9 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { useRouter } from "next/navigation"
 import { useFormContext } from "@/src/context/form-context"
 import { locationSchema, type LocationFormData } from "@/src/lib/validation/form-schemas"
-import { Form, FormField, FormItem, FormControl, FormMessage } from "@/components/ui/form"
-import { Input } from "@/components/ui/input"
+import { Form, FormField, FormItem, FormControl, FormMessage } from "@/src/components/ui/form"
+import { Input } from "@/src/components/ui/input"
+import { Button } from "@/src/components/ui/button"
 
 export default function LocationPage() {
     const router = useRouter()
@@ -16,11 +17,11 @@ export default function LocationPage() {
     // Redirect if previous step not completed
     useEffect(() => {
         if (!isStepCompleted("careType")) {
-            router.push("/survey/care-type")
+            router.push("/start")
         }
         
         if (formData.careType === "daycare") {
-            router.push("/survey/results")
+            router.push("/results")
         }
     }, [isStepCompleted, formData.careType, router])
 
@@ -52,7 +53,7 @@ export default function LocationPage() {
                         render={({ field }) => (
                             <FormItem>
                                 <FormControl>
-                                    <Input placeholder="Ex: 10115" {...field} />
+                                    <Input placeholder="Ex: 10115" className="placeholder:text-gray-300" {...field} />
                                 </FormControl>
                                 <FormMessage />
                                 <a href="#" className="text-[#A958FF] text-sm hover:underline mt-2 inline-block">
@@ -62,13 +63,13 @@ export default function LocationPage() {
                         )}
                     />
 
-                    <button
+                    <Button
                         type="submit"
-                        className="w-full bg-primary text-white py-2 rounded-md font-medium hover:bg-primaryHover transition-colors"
+                        className="w-full py-2 mt-10"
                         disabled={!form.formState.isValid}
                     >
                         Continue
-                    </button>
+                    </Button>
                 </form>
             </Form>
         </div>
