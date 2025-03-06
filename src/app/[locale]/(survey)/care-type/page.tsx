@@ -18,7 +18,7 @@ export default function CareTypePage() {
   // Redirect if previous step not completed
   useEffect(() => {
     if (!isStepCompleted("personalInfo")) {
-      router.push("/survey/personal-info")
+      router.push("/personal-info")
     }
   }, [isStepCompleted, router])
 

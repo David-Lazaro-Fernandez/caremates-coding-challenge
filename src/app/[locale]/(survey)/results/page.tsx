@@ -18,13 +18,7 @@ export default function ResultsPage() {
   // Redirect if required steps not completed
   useEffect(() => {
     if (!isStepCompleted("careType")) {
-      router.push("/survey/care-type")
-      return
-    }
-
-    // For non-daycare, check location
-    if (formData.careType !== "daycare" && !isStepCompleted("location")) {
-      router.push("/survey/location")
+      router.push("/care-type")
       return
     }
 
