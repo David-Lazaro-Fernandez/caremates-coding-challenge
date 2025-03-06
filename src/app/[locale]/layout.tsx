@@ -6,8 +6,6 @@ import {clsx} from 'clsx';
 import {Inter} from 'next/font/google';
 import {routing} from '@/src/i18n/routing';
 
-import './styles.css';
-
 type Props = {
   children: ReactNode;
   params: Promise<{locale: string}>;
