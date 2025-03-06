@@ -7,8 +7,9 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { useRouter } from "next/navigation"
 import { useFormContext } from "@/src/context/form-context"
 import { careTypeSchema, type CareTypeFormData } from "@/src/lib/validation/form-schemas"
-import { Form, FormField, FormItem, FormControl, FormMessage } from "@/components/ui/form"
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
+import { Form, FormField, FormItem, FormControl, FormMessage } from "@/src/components/ui/form"
+import { RadioGroup, RadioGroupItem } from "@/src/components/ui/radio-group"
+import { Button } from "@/src/components/ui/button"
 
 export default function CareTypePage() {
   const router = useRouter()
@@ -76,13 +77,13 @@ export default function CareTypePage() {
             )}
           />
 
-          <button
+          <Button
             type="submit"
-            className="w-full bg-primary text-white py-2 rounded-md font-medium hover:bg-primaryHover transition-colors"
+             className="w-full py-2 mt-10 disabled:bg-gray-100"
             disabled={!form.formState.isValid}
           >
             Continue
-          </button>
+          </Button>
         </form>
       </Form>
     </div>

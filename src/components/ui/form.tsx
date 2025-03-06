@@ -13,8 +13,8 @@ import {
   type FieldValues,
 } from "react-hook-form"
 
-import { cn } from "@/lib/utils"
-import { Label } from "@/components/ui/label"
+import { cn } from "@/src/lib/utils"
+import { Label } from "@/src/components/ui/label"
 
 const Form = FormProvider
 
@@ -97,7 +97,7 @@ function FormLabel({
     <Label
       data-slot="form-label"
       data-error={!!error}
-      className={cn("data-[error=true]:text-destructive-foreground", className)}
+      className={cn("data-[error=true]:text-red-400", className)}
       htmlFor={formItemId}
       {...props}
     />
@@ -147,7 +147,7 @@ function FormMessage({ className, ...props }: React.ComponentProps<"p">) {
     <p
       data-slot="form-message"
       id={formMessageId}
-      className={cn("text-destructive-foreground text-sm", className)}
+      className={cn("text-red-400 text-sm", className)}
       {...props}
     >
       {body}

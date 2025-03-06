@@ -7,6 +7,7 @@ import { ArrowLeft } from "lucide-react"
 import { useFormContext } from "@/src/context/form-context"
 import { findMatchingFacilities } from "@/src/services/facility-service"
 import type { Facility } from "@/src/types/facility"
+import { Button } from "@/src/components/ui/button"
 
 export default function ResultsPage() {
   const router = useRouter()
@@ -36,7 +37,7 @@ export default function ResultsPage() {
 
   const handleNewApplication = () => {
     resetForm()
-    router.push("/survey/terms")
+    router.push("/start")
   }
 
   if (loading) {
@@ -62,11 +63,11 @@ export default function ResultsPage() {
             <div key={facility.id} className="p-4 rounded-lg border border-gray-200">
               <h3 className="font-semibold text-lg text-[#333950]">{facility.name}</h3>
               <p className="text-[#333950]/70 mt-1">{facility.address}</p>
-              <button 
+              <Button 
               onClick={()=>router.push('/end')}
-              className="w-full bg-primary text-white py-2 rounded-md font-medium hover:bg-primaryHover transition-colors mt-4">
+              className="py-2 mt-4 w-full">
                 Register
-              </button>
+              </Button>
             </div>
           ))
         ) : (
@@ -76,7 +77,7 @@ export default function ResultsPage() {
               Try adjusting your search parameters or contact support for assistance
             </p>
             <Link
-              href="/survey/care-type"
+              href="/zip"
               className="mt-6 inline-block bg-primary text-white px-6 py-2 rounded-md font-medium"
             >
               Adjust Search
