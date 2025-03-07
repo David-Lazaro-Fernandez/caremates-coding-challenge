@@ -142,22 +142,29 @@ export const applicantService = {
     }
   },
 
-  async test(): Promise<Application | null> {
+  async getAllApplications(): Promise<Application[] | null> {
     try {
       const { data, error } = await supabase
         .from("Applications")
         .select("*")
-        .eq("id", "f591959b-b558-4c50-a249-0ed901415b18")
-        .single();
+        .order("created_at", { ascending: false });
 
-      return data;
-    } catch (error: any) {
-      console.error("Detailed error:", {
-        name: error.name,
-        message: error.message,
-        stack: error.stack,
-        details: error,
-      });
+      if (error) {
+        console.error("Supabase error:", error.message);
+        return null;
+      }
+      return data as Application[];
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        console.error("Detailed error:", {
+          name: err.name,
+          message: err.message,
+          stack: err.stack,
+          details: err,
+        });
+      } else {
+        console.error("An unexpected error occurred:", err);
+      }
       return null;
     }
   },

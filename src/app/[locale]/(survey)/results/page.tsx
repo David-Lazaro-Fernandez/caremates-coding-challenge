@@ -2,13 +2,13 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { useFormContext } from "@/src/context/form-context";
 import { findMatchingFacilities } from "@/src/services/facility-service";
 import type { Facility } from "@/src/types/facility";
 import { Button } from "@/src/components/ui/button";
 import { useTranslations } from "next-intl";
+import { applicantService } from "@/src/services/application-service";
 
 export default function ResultsPage() {
   const router = useRouter();
@@ -34,6 +34,9 @@ export default function ResultsPage() {
 
   const handleNewApplication = async () => {
     await resetForm();
+    await applicantService.updateApplication(formData.id!, {
+      finished_at: new Date(),
+    });
     router.push("/start");
   };
 

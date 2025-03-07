@@ -68,14 +68,14 @@
     "adjustSearch": "Adjust Search"
   },
   "thankYou": {
-      "congrats": "Congratulations!",
-      "createApplication": "Create a new application",
-      "thanks": {
-        "prefix": "Thank you for submitting your application with us, please go to the",
-        "hospital": "selected hospital",
-        "sufix": "as soon as you can."
-      }
-    },
+    "congrats": "Congratulations!",
+    "createApplication": "Create a new application",
+    "thanks": {
+      "prefix": "Thank you for submitting your application with us, please go to the",
+      "hospital": "selected hospital",
+      "sufix": "as soon as you can."
+    }
+  },
   "Error": {
     "title": "Something strange happened, maybe Martian tacos attacked planet Earth or we just couldn't find the page you were looking for.",
     "description": "Don't be sad, look at this platypus"

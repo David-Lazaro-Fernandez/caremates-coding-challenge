@@ -1,90 +1,90 @@
 {
-    "letsGetStarted": {
-      "title": "Lass uns anfangen",
-      "heading": "Hallo! Finden Sie in weniger als 2 Minuten die richtige Pflegeeinrichtung für Ihre Bedürfnisse",
-      "steps": {
-        "step1": {
-          "title": "Schritt 1: Überprüfen Sie Ihre Angaben",
-          "description": "Ihre angegebenen Informationen (Name, benötigte Pflegeart und Postleitzahl) werden verwendet, um die am besten geeignete Pflegeeinrichtung für Ihre Bedürfnisse zu bestimmen."
-        },
-        "step2": {
-          "title": "Schritt 2: Bestätigen Sie Ihre Auswahl",
-          "description": "Nachdem Sie Ihre Angaben überprüft haben, bestätigen Sie Ihre Auswahl. Ein Pflegekoordinator wird sich dann mit Ihnen in Verbindung setzen, um die Verfügbarkeit der Einrichtung und die nächsten Schritte zu besprechen."
-        },
-        "step3": {
-          "title": "Schritt 3: Schließen Sie Ihre Registrierung ab",
-          "description": "Bereiten Sie den Abschluss Ihrer Registrierung vor, indem Sie alle erforderlichen zusätzlichen Dokumente prüfen und bereitstellen, um Ihren Platz zu sichern."
-        }
+  "letsGetStarted": {
+    "title": "Lass uns anfangen",
+    "heading": "Hallo! Finden Sie in weniger als 2 Minuten die richtige Pflegeeinrichtung für Ihre Bedürfnisse",
+    "steps": {
+      "step1": {
+        "title": "Schritt 1: Überprüfen Sie Ihre Angaben",
+        "description": "Ihre angegebenen Informationen (Name, benötigte Pflegeart und Postleitzahl) werden verwendet, um die am besten geeignete Pflegeeinrichtung für Ihre Bedürfnisse zu bestimmen."
       },
-      "agreement": {
-        "text": "Ich bestätige, dass ich die",
-        "termsOfUse": "CareMates Nutzungsbedingungen",
-        "and": "und",
-        "facilityTerms": "[Facility] Nutzungsbedingungen, Zustimmung zur Nutzung elektronischer Signaturen und Aufzeichnungen."
+      "step2": {
+        "title": "Schritt 2: Bestätigen Sie Ihre Auswahl",
+        "description": "Nachdem Sie Ihre Angaben überprüft haben, bestätigen Sie Ihre Auswahl. Ein Pflegekoordinator wird sich dann mit Ihnen in Verbindung setzen, um die Verfügbarkeit der Einrichtung und die nächsten Schritte zu besprechen."
       },
-      "privacyNotice": {
-        "text": "Durch Klicken auf „Weiter“ bestätige ich den Erhalt der",
-        "privacyPolicy": "CareMates-Datenschutzrichtlinie",
-        "gdprConsent": "und stimme der Verarbeitung meiner persönlichen Daten gemäß der EU-Datenschutz-Grundverordnung (DSGVO) zu."
+      "step3": {
+        "title": "Schritt 3: Schließen Sie Ihre Registrierung ab",
+        "description": "Bereiten Sie den Abschluss Ihrer Registrierung vor, indem Sie alle erforderlichen zusätzlichen Dokumente prüfen und bereitstellen, um Ihren Platz zu sichern."
       }
     },
-    "personalInfo": {
-      "title": "Persönliche Informationen",
-      "heading": "Lassen Sie uns Sie kennenlernen",
-      "firstName": "Vorname",
-      "middleName": "Zweiter Vorname",
-      "lastName": "Nachname",
-      "placeholders": {
-        "firstName": "Z. B.: Diego",
-        "middleName": "Z. B.: Dionisio",
-        "lastName": "Z. B.: Luna Alexander"
-      },
-      "continue": "Weiter"
+    "agreement": {
+      "text": "Ich bestätige, dass ich die",
+      "termsOfUse": "CareMates Nutzungsbedingungen",
+      "and": "und",
+      "facilityTerms": "[Facility] Nutzungsbedingungen, Zustimmung zur Nutzung elektronischer Signaturen und Aufzeichnungen."
     },
-    "typeOfCare": {
-      "title": "Art der Pflege",
-      "heading": "Welche Art von Pflege suchen Sie heute?",
-      "options": {
-        "stationary": "Stationäre Pflege",
-        "ambulatory": "Ambulante Pflege",
-        "dayCare": "Tagespflege"
-      },
-      "continue": "Weiter"
-    },
-    "zipCode": {
-      "title": "Postleitzahl",
-      "heading": "Wo befinden Sie sich?",
-      "placeholder": "Z. B.: 10015",
-      "dontKnow": "Ich kenne meine Postleitzahl nicht",
-      "continue": "Weiter"
-    },
-    "results": {
-      "title": "Ergebnisse",
-      "congratulations": "Herzlichen Glückwunsch! Dies sind die Einrichtungen, die wir für Sie gefunden haben.",
-      "register": "Registrieren",
-      "createApplication": "Neuen Antrag erstellen",
-      "noFacilitiesFound": "Keine Einrichtungen gefunden, die Ihren Kriterien entsprechen",
-      "searchHint": "Versuchen Sie, Ihre Suchparameter anzupassen oder kontaktieren Sie den Support für Hilfe",
-      "adjustSearch": "Suche anpassen"
-    },
-    "thankYou": {
-      "congrats": "Herzlichen Glückwunsch!",
-      "createApplication": "Neuen Antrag erstellen",
-      "thanks": {
-        "prefix": "Vielen Dank für Ihre Bewerbung bei uns, bitte gehen Sie zum",
-        "hospital": "ausgewählten Krankenhaus",
-        "sufix": "so bald wie möglich."
-      }
-    },
-    "Error": {
-      "title": "Etwas Seltsames ist passiert, vielleicht haben Mars-Tacos den Planeten Erde angegriffen oder wir konnten die gesuchte Seite einfach nicht finden.",
-      "description": "Sei nicht traurig, schau dir dieses Schnabeltier an"
-    },
-    "Manifest": {
-      "name": "next-intl example"
-    },
-    "LocaleSwitcher": {
-      "label": "Sprache ändern",
-      "locale": "{locale, select, de {🇩🇪 Deutsch} en {🇺🇸 Englisch} es {🇲🇽 Spanisch} fr {🇫🇷 Französisch} other {Unbekannt}}"
+    "privacyNotice": {
+      "text": "Durch Klicken auf „Weiter“ bestätige ich den Erhalt der",
+      "privacyPolicy": "CareMates-Datenschutzrichtlinie",
+      "gdprConsent": "und stimme der Verarbeitung meiner persönlichen Daten gemäß der EU-Datenschutz-Grundverordnung (DSGVO) zu."
     }
+  },
+  "personalInfo": {
+    "title": "Persönliche Informationen",
+    "heading": "Lassen Sie uns Sie kennenlernen",
+    "firstName": "Vorname",
+    "middleName": "Zweiter Vorname",
+    "lastName": "Nachname",
+    "placeholders": {
+      "firstName": "Z. B.: Diego",
+      "middleName": "Z. B.: Dionisio",
+      "lastName": "Z. B.: Luna Alexander"
+    },
+    "continue": "Weiter"
+  },
+  "typeOfCare": {
+    "title": "Art der Pflege",
+    "heading": "Welche Art von Pflege suchen Sie heute?",
+    "options": {
+      "stationary": "Stationäre Pflege",
+      "ambulatory": "Ambulante Pflege",
+      "dayCare": "Tagespflege"
+    },
+    "continue": "Weiter"
+  },
+  "zipCode": {
+    "title": "Postleitzahl",
+    "heading": "Wo befinden Sie sich?",
+    "placeholder": "Z. B.: 10015",
+    "dontKnow": "Ich kenne meine Postleitzahl nicht",
+    "continue": "Weiter"
+  },
+  "results": {
+    "title": "Ergebnisse",
+    "congratulations": "Herzlichen Glückwunsch! Dies sind die Einrichtungen, die wir für Sie gefunden haben.",
+    "register": "Registrieren",
+    "createApplication": "Neuen Antrag erstellen",
+    "noFacilitiesFound": "Keine Einrichtungen gefunden, die Ihren Kriterien entsprechen",
+    "searchHint": "Versuchen Sie, Ihre Suchparameter anzupassen oder kontaktieren Sie den Support für Hilfe",
+    "adjustSearch": "Suche anpassen"
+  },
+  "thankYou": {
+    "congrats": "Herzlichen Glückwunsch!",
+    "createApplication": "Neuen Antrag erstellen",
+    "thanks": {
+      "prefix": "Vielen Dank für Ihre Bewerbung bei uns, bitte gehen Sie zum",
+      "hospital": "ausgewählten Krankenhaus",
+      "sufix": "so bald wie möglich."
+    }
+  },
+  "Error": {
+    "title": "Etwas Seltsames ist passiert, vielleicht haben Mars-Tacos den Planeten Erde angegriffen oder wir konnten die gesuchte Seite einfach nicht finden.",
+    "description": "Sei nicht traurig, schau dir dieses Schnabeltier an"
+  },
+  "Manifest": {
+    "name": "next-intl example"
+  },
+  "LocaleSwitcher": {
+    "label": "Sprache ändern",
+    "locale": "{locale, select, de {🇩🇪 Deutsch} en {🇺🇸 Englisch} es {🇲🇽 Spanisch} fr {🇫🇷 Französisch} other {Unbekannt}}"
   }
+}

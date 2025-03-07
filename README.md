@@ -2,8 +2,6 @@
   <img src='https://github.com/user-attachments/assets/69ec2124-3852-4ef1-a62b-1b81d9385a5a' width='300px'>
 </div>
 
-
-
 # CarePortal MVP
 
 A Next.js-based healthcare facility matching platform that helps patients find appropriate care facilities based on their needs and location.
@@ -21,11 +19,13 @@ CarePortal MVP is a web application designed to streamline the process of matchi
 ### Core Features
 
 - **Smart Facility Matching**: Matches patients with facilities based on:
+
   - Care type (Stationary, Ambulatory, Day Care)
   - Geographic location (ZIP code-based matching)
   - Facility capacity and availability
 
-- **Progressive Form Flow**: 
+- **Progressive Form Flow**:
+
   - Terms acceptance
   - Personal information collection
   - Care type selection
@@ -45,12 +45,14 @@ CarePortal MVP is a web application designed to streamline the process of matchi
 ### Installation
 
 1. Clone the repository
+
 ```bash
 git clone <repository-url>
 cd careportal-mvp
 ```
 
 2. Install dependencies
+
 ```bash
 npm install
 # or
@@ -58,11 +60,13 @@ yarn install
 ```
 
 3. Set up environment variables
+
 ```bash
 cp .env.example .env.local
 ```
 
 Required environment variables:
+
 ```
 NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
 NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
@@ -140,7 +144,6 @@ interface FormContextType {
 }
 ```
 
-
 2. **Facility Matching Logic**
 
 ```61:99:src/services/facility-service.ts
@@ -185,7 +188,6 @@ export function findMatchingFacilities(
 }
 ```
 
-
 3. **Multi-language Support**
 
 ```1:19:src/middleware.ts
@@ -209,7 +211,6 @@ export const config = {
   ],
 };
 ```
-
 
 ## Code Organization
 
@@ -317,4 +318,3 @@ This project uses various open-source packages - see `package.json` for the full
   }
 
 ```
-
