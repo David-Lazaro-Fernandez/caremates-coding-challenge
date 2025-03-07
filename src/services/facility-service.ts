@@ -62,26 +62,24 @@ export function findMatchingFacilities(
   careType: string,
   zipCode: string,
 ): FacilityMatchResult {
-  if (careType === "daycare") {
+  if (careType.toLowerCase() === "daycare") {
     return { matched: false, facilities: [] };
   }
 
-  const patientZip = Number.parseInt(zipCode, 10);
+  const patientZip = parseInt(zipCode, 10);
 
   const matchingFacilities = facilities.filter((facility) => {
-    if (
-      careType === "stationary" &&
-      (facility.careType === "Stationary" ||
-        facility.careType === "Stationary & Ambulatory")
-    ) {
-      return true;
+    if (careType.toLowerCase() === "stationary") {
+      return (
+        facility.careType === "Stationary" ||
+        facility.careType === "Stationary & Ambulatory"
+      );
     }
-    if (
-      careType === "ambulatory" &&
-      (facility.careType === "Ambulatory" ||
-        facility.careType === "Stationary & Ambulatory")
-    ) {
-      return true;
+    if (careType.toLowerCase() === "ambulatory") {
+      return (
+        facility.careType === "Ambulatory" ||
+        facility.careType === "Stationary & Ambulatory"
+      );
     }
     return false;
   });
@@ -95,7 +93,23 @@ export function findMatchingFacilities(
     return { matched: false, facilities: [] };
   }
 
-  return { matched: true, facilities: servingFacilities };
+  const facilitiesWithDistance = servingFacilities.map((facility) => ({
+    ...facility,
+    distance: Math.abs(patientZip - parseInt(facility.facilityZipCode, 10)),
+  }));
+
+  const availableFacilities = facilitiesWithDistance.filter(
+    (facility) =>
+      facility.capacity === "Available" && facility.distance <= 3000,
+  );
+  
+  availableFacilities.sort((a, b) => a.distance - b.distance);
+
+  if (availableFacilities.length > 0) {
+    return { matched: true, facilities: availableFacilities };
+  }
+
+  return { matched: false, facilities: [] };
 }
 
 export const facilityService = {
