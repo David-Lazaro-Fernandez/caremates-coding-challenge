@@ -33,6 +33,7 @@ export default function AdminDashboard() {
           completedApplications: applications.filter((app) => app.finished_at)
             .length,
         });
+        setLoading(false)
       }
     };
     fetchData();
