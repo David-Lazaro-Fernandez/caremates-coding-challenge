@@ -47,8 +47,8 @@ CarePortal MVP is a web application designed to streamline the process of matchi
 1. Clone the repository
 
 ```bash
-git clone <repository-url>
-cd careportal-mvp
+git clone https://github.com/David-Lazaro-Fernandez/caremates-coding-challenge.git
+cd caremates-coding-challenge
 ```
 
 2. Install dependencies
