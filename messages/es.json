@@ -68,14 +68,14 @@
     "adjustSearch": "Adjust Search"
   },
   "thankYou": {
-      "congrats": "¡Felicidades!",
-      "createApplication": "Crear una nueva solicitud",
-      "thanks": {
-        "prefix": "Gracias por enviar tu solicitud con nosotros, por favor dirígete al",
-        "hospital": "hospital seleccionado",
-        "sufix": "tan pronto como puedas."
-      }
-    },
+    "congrats": "¡Felicidades!",
+    "createApplication": "Crear una nueva solicitud",
+    "thanks": {
+      "prefix": "Gracias por enviar tu solicitud con nosotros, por favor dirígete al",
+      "hospital": "hospital seleccionado",
+      "sufix": "tan pronto como puedas."
+    }
+  },
   "Error": {
     "title": "Algo raro paso, tal vez los tacos marcianos atacaron el planeta tierra o solamente no pudimos encontrar la pagina que buscabas.",
     "description": "No estes triste, mira a este ornitorrinco."

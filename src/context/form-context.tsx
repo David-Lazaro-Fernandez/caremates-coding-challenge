@@ -94,12 +94,12 @@ export function FormProvider({ children }: { children: ReactNode }) {
     localStorage.removeItem("surveyFormData");
     localStorage.removeItem("completedSteps");
     localStorage.removeItem("currentStep");
-    
+
     setFormData({});
     setCompletedSteps([]);
     setCurrentStep("terms");
-    
-    return new Promise<void>(resolve => setTimeout(resolve, 100));
+
+    return new Promise<void>((resolve) => setTimeout(resolve, 100));
   };
 
   return (

@@ -33,12 +33,12 @@ export default function ResultsPage() {
   }, [formData, isStepCompleted, router]);
 
   const handleNewApplication = async () => {
-      await resetForm();
-      await applicantService.updateApplication(formData.id!, {
-        finished_at: new Date(),
-      });
-      router.push("/start");
-    };
+    await resetForm();
+    await applicantService.updateApplication(formData.id!, {
+      finished_at: new Date(),
+    });
+    router.push("/start");
+  };
 
   const handleAdjustSearch = () => {
     if (formData.careType === "daycare") {

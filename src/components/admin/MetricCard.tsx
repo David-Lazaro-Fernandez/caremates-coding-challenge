@@ -14,4 +14,4 @@ export function MetricCard({ title, value, description }: MetricCardProps) {
       <p className="text-sm text-gray-500 mt-1">{description}</p>
     </Card>
   );
-} 
+}

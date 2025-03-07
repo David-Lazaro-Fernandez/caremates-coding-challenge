@@ -1,91 +1,90 @@
 {
-  
-    "letsGetStarted": {
-      "title": "Commençons",
-      "heading": "Salut! Trouvez l'établissement de soins qui vous convient en moins de 2 minutes",
-      "steps": {
-        "step1": {
-          "title": "Étape 1 : Vérifiez vos informations",
-          "description": "Les informations fournies (nom, type de soins requis et code postal) seront utilisées pour déterminer l'établissement de soins le plus approprié pour vos besoins."
-        },
-        "step2": {
-          "title": "Étape 2 : Confirmez votre sélection",
-          "description": "Après avoir vérifié vos informations, confirmez votre sélection. Un coordinateur de soins vous contactera ensuite pour discuter de la disponibilité de l'établissement et des prochaines étapes."
-        },
-        "step3": {
-          "title": "Étape 3 : Finalisez votre inscription",
-          "description": "Préparez-vous à finaliser votre inscription en examinant et en fournissant toute documentation supplémentaire requise pour garantir votre place."
-        }
+  "letsGetStarted": {
+    "title": "Commençons",
+    "heading": "Salut! Trouvez l'établissement de soins qui vous convient en moins de 2 minutes",
+    "steps": {
+      "step1": {
+        "title": "Étape 1 : Vérifiez vos informations",
+        "description": "Les informations fournies (nom, type de soins requis et code postal) seront utilisées pour déterminer l'établissement de soins le plus approprié pour vos besoins."
       },
-      "agreement": {
-        "text": "Je confirme avoir lu et accepté les",
-        "termsOfUse": "Conditions d'utilisation de CareMates",
-        "and": "ent",
-        "facilityTerms": "Conditions d'utilisation de [Facility], Consentement à l'utilisation des signatures électroniques et des enregistrements."
+      "step2": {
+        "title": "Étape 2 : Confirmez votre sélection",
+        "description": "Après avoir vérifié vos informations, confirmez votre sélection. Un coordinateur de soins vous contactera ensuite pour discuter de la disponibilité de l'établissement et des prochaines étapes."
       },
-      "privacyNotice": {
-        "text": "En cliquant sur « Continuer », je reconnais avoir reçu la",
-        "privacyPolicy": "Politique de confidentialité de CareMates",
-        "gdprConsent": "et je consens au traitement de mes données personnelles conformément au Règlement général sur la protection des données (RGPD) de l'UE."
+      "step3": {
+        "title": "Étape 3 : Finalisez votre inscription",
+        "description": "Préparez-vous à finaliser votre inscription en examinant et en fournissant toute documentation supplémentaire requise pour garantir votre place."
       }
     },
-    "personalInfo": {
-      "title": "Informations personnelles",
-      "heading": "Faisons connaissance",
-      "firstName": "Prénom",
-      "middleName": "Deuxième prénom",
-      "lastName": "Nom de famille",
-      "placeholders": {
-        "firstName": "Ex : Diego",
-        "middleName": "Ex : Dionisio",
-        "lastName": "Ex : Luna Alexander"
-      },
-      "continue": "Continuer"
+    "agreement": {
+      "text": "Je confirme avoir lu et accepté les",
+      "termsOfUse": "Conditions d'utilisation de CareMates",
+      "and": "ent",
+      "facilityTerms": "Conditions d'utilisation de [Facility], Consentement à l'utilisation des signatures électroniques et des enregistrements."
     },
-    "typeOfCare": {
-      "title": "Type de soins",
-      "heading": "Quel type de soins recherchez-vous aujourd'hui ?",
-      "options": {
-        "stationary": "Hospitalisation",
-        "ambulatory": "Ambulatoire",
-        "dayCare": "Garderie"
-      },
-      "continue": "Continuer"
-    },
-    "zipCode": {
-      "title": "Code postal",
-      "heading": "Où êtes-vous situé(e) ?",
-      "placeholder": "Ex : 10015",
-      "dontKnow": "Je ne connais pas mon code postal",
-      "continue": "Continuer"
-    },
-    "results": {
-      "title": "Résultats",
-      "congratulations": "Félicitations! Voici les installations que nous avons trouvées pour vous.",
-      "register": "S'inscrire",
-      "createApplication": "Créer une nouvelle demande",
-      "noFacilitiesFound": "Aucune installation trouvée correspondant à vos critères",
-      "searchHint": "Essayez d'ajuster vos paramètres de recherche ou contactez le support pour obtenir de l'aide",
-      "adjustSearch": "Ajuster la recherche"
-    },
-    "thankYou": {
-      "congrats": "Félicitations !",
-      "createApplication": "Créer une nouvelle demande",
-      "thanks": {
-        "prefix": "Merci d'avoir soumis votre candidature chez nous, veuillez vous rendre à l'",
-        "hospital": "hôpital sélectionné",
-        "sufix": "dès que possible."
-      }
-    },
-    "Error":{
-      "title":"Quelque chose d'étrange s'est produit, peut-être que les tacos martiens ont attaqué la planète Terre ou nous n'avons tout simplement pas pu trouver la page que vous recherchiez.",
-      "description":"No estes triste, mira a este ornitorrinco."
-    },
-    "Manifest": {
-      "name": "next-intl example"
-    },
-    "LocaleSwitcher": {
-      "label": "Changer de langue",
-      "locale": "{locale, select, de {🇩🇪 Allemand} en {🇺🇸 Anglais} es {🇲🇽 Espagnol} fr {🇫🇷 Français} other {Inconnu}}"
+    "privacyNotice": {
+      "text": "En cliquant sur « Continuer », je reconnais avoir reçu la",
+      "privacyPolicy": "Politique de confidentialité de CareMates",
+      "gdprConsent": "et je consens au traitement de mes données personnelles conformément au Règlement général sur la protection des données (RGPD) de l'UE."
     }
+  },
+  "personalInfo": {
+    "title": "Informations personnelles",
+    "heading": "Faisons connaissance",
+    "firstName": "Prénom",
+    "middleName": "Deuxième prénom",
+    "lastName": "Nom de famille",
+    "placeholders": {
+      "firstName": "Ex : Diego",
+      "middleName": "Ex : Dionisio",
+      "lastName": "Ex : Luna Alexander"
+    },
+    "continue": "Continuer"
+  },
+  "typeOfCare": {
+    "title": "Type de soins",
+    "heading": "Quel type de soins recherchez-vous aujourd'hui ?",
+    "options": {
+      "stationary": "Hospitalisation",
+      "ambulatory": "Ambulatoire",
+      "dayCare": "Garderie"
+    },
+    "continue": "Continuer"
+  },
+  "zipCode": {
+    "title": "Code postal",
+    "heading": "Où êtes-vous situé(e) ?",
+    "placeholder": "Ex : 10015",
+    "dontKnow": "Je ne connais pas mon code postal",
+    "continue": "Continuer"
+  },
+  "results": {
+    "title": "Résultats",
+    "congratulations": "Félicitations! Voici les installations que nous avons trouvées pour vous.",
+    "register": "S'inscrire",
+    "createApplication": "Créer une nouvelle demande",
+    "noFacilitiesFound": "Aucune installation trouvée correspondant à vos critères",
+    "searchHint": "Essayez d'ajuster vos paramètres de recherche ou contactez le support pour obtenir de l'aide",
+    "adjustSearch": "Ajuster la recherche"
+  },
+  "thankYou": {
+    "congrats": "Félicitations !",
+    "createApplication": "Créer une nouvelle demande",
+    "thanks": {
+      "prefix": "Merci d'avoir soumis votre candidature chez nous, veuillez vous rendre à l'",
+      "hospital": "hôpital sélectionné",
+      "sufix": "dès que possible."
+    }
+  },
+  "Error": {
+    "title": "Quelque chose d'étrange s'est produit, peut-être que les tacos martiens ont attaqué la planète Terre ou nous n'avons tout simplement pas pu trouver la page que vous recherchiez.",
+    "description": "No estes triste, mira a este ornitorrinco."
+  },
+  "Manifest": {
+    "name": "next-intl example"
+  },
+  "LocaleSwitcher": {
+    "label": "Changer de langue",
+    "locale": "{locale, select, de {🇩🇪 Allemand} en {🇺🇸 Anglais} es {🇲🇽 Espagnol} fr {🇫🇷 Français} other {Inconnu}}"
   }
+}

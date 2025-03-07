@@ -47,9 +47,7 @@ export function Sidebar() {
           );
         })}
       </nav>
-      <Button 
-      onClick={handleExit}
-      className="bg-red-500 hover:bg-red-300 mx-4">
+      <Button onClick={handleExit} className="bg-red-500 hover:bg-red-300 mx-4">
         {" "}
         <LogOut /> Exit{" "}
       </Button>

@@ -11,10 +11,8 @@ export default function AdminLayout({
       <Sidebar />
       <div className="flex flex-col w-full">
         <Header />
-        <main className="p-8">
-          {children}
-        </main>
+        <main className="p-8">{children}</main>
       </div>
     </div>
   );
-} 
+}

@@ -35,7 +35,7 @@ export default function AdminDashboard() {
         });
       }
     };
-    fetchData()
+    fetchData();
   }, [supabase]);
 
   if (loading) {

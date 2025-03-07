@@ -19,7 +19,7 @@ ChartJS.register(
   LineElement,
   Title,
   Tooltip,
-  Legend
+  Legend,
 );
 
 export function LineChart() {
@@ -51,4 +51,4 @@ export function LineChart() {
   };
 
   return <Line data={data} options={options} />;
-} 
+}
