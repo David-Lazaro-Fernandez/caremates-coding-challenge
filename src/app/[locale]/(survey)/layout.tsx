@@ -1,7 +1,7 @@
 import type React from "react";
 import { FormProvider } from "../../../context/form-context";
 import { UnsavedChangesProvider } from "@/src/context/unsaved-changes-context";
-
+import Navigation from "@/src/components/Nagivation";
 export default function SurveyLayout({
   children,
 }: {
@@ -9,7 +9,10 @@ export default function SurveyLayout({
 }) {
   return (
     <FormProvider>
-      <UnsavedChangesProvider>{children}</UnsavedChangesProvider>
+      <UnsavedChangesProvider>
+        <Navigation />
+        {children}
+      </UnsavedChangesProvider>
     </FormProvider>
   );
 }

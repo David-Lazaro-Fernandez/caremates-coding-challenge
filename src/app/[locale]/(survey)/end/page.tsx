@@ -8,12 +8,14 @@ import { ArrowLeft } from "lucide-react";
 import { useFormContext } from "@/src/context/form-context";
 import { Button } from "@/src/components/ui/button";
 import { useTranslations } from "next-intl";
+import { applicantService } from "@/src/services/application-service";
 
 export default function EndPage() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const hospital = searchParams.get("hospital");
   const [showConfetti, setShowConfetti] = useState(true);
+  const { formData } = useFormContext();
   const { resetForm } = useFormContext();
   const t = useTranslations("thankYou");
 
@@ -25,12 +27,12 @@ export default function EndPage() {
     return () => clearTimeout(timer);
   }, []);
 
-  const handleNewApplication = () => {
-    resetForm();
-    localStorage.removeItem("completedSteps");
-    setTimeout(() => {
-      router.push("/start");
-    }, 0);
+  const handleNewApplication = async () => {
+    await resetForm();
+    await applicantService.updateApplication(formData.id!, {
+      finished_at: new Date(),
+    });
+    router.push("/start");
   };
 
   return (
